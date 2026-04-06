@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OnSite Tech — Construction Software Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amber: #D4A843;
+    --amber-hover: #C49A38;
+    --amber-light: rgba(212,168,67,0.08);
+    --charcoal: #2B2B2B;
+    --charcoal-medium: #3D3D3D;
+    --bg: #F5F5F3;
+    --bg-white: #FFFFFF;
+    --bg-alt: #EDEDED;
+    --border: #DCDCDA;
+    --border-light: #E8E8E6;
+    --text-primary: #2B2B2B;
+    --text-secondary: #5A5A58;
+    --text-muted: #8A8A88;
+    --white: #FFFFFF;
+    --hero-dark: #0D0D0D;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 72px;
+    background: rgba(245,245,243,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--charcoal);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+  .nav-logo span { color: var(--amber); font-size: 14px; display: block; margin-top: -8px; letter-spacing: 3px; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+  .nav-cta {
+    padding: 10px 24px !important;
+    background: var(--amber) !important;
+    color: var(--white) !important;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--amber-hover) !important; color: var(--white) !important; }
+  .nav-back {
+    font-size: 12px !important;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: all 0.2s !important;
+  }
+  .nav-back:hover { border-color: var(--text-muted) !important; color: var(--text-secondary) !important; }
+  .nav-client {
+    border: 1px solid var(--border);
+    padding: 8px 18px;
+    border-radius: 4px;
+    transition: all 0.2s !important;
+  }
+  .nav-client:hover { border-color: var(--amber) !important; color: var(--amber) !important; }
+
+  /* Mobile nav */
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); margin: 5px 0; transition: 0.3s; }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13,13,13,0.92) 0%, rgba(13,13,13,0.7) 50%, rgba(13,13,13,0.4) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 720px;
+    padding: 140px 48px 80px;
+  }
+  .hero-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-sub {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 16px 36px;
+    background: var(--amber);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-primary:hover { background: var(--amber-hover); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,168,67,0.3); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 16px 36px;
+    background: transparent;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========== SECTIONS COMMON ========== */
+  section { padding: 120px 48px; }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+  .section-sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 600px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ========== TRUST / WHY US ========== */
+  .trust { background: var(--bg-white); }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+  }
+  .trust-card {
+    background: var(--bg);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 36px 32px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .trust-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .trust-card:hover::before { transform: scaleX(1); }
+  .trust-card:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+  .trust-icon {
+    width: 48px; height: 48px;
+    background: var(--amber-light);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  .trust-card h3 {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .trust-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .trust-card .nda-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--amber);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .trust-card .nda-link:hover { text-decoration: underline; color: var(--amber-hover); }
+
+  /* ========== SERVICES ========== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .service-block {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .service-block:hover { border-color: var(--amber); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+  .service-block .tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(212,168,67,0.12);
+    color: var(--amber);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .service-block h3 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .service-block p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+  }
+  .service-features {
+    list-style: none;
+    padding: 0;
+  }
+  .service-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-top: 1px solid var(--border-light);
+  }
+  .service-features li .check {
+    color: var(--amber);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ========== APPS PORTFOLIO ========== */
+  .apps { background: var(--bg-white); }
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    margin-top: 56px;
+  }
+  .app-card {
+    background: var(--bg);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.35s;
+  }
+  .app-card:hover { border-color: var(--amber); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+  .app-card-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+  .app-card-body {
+    padding: 28px 28px 32px;
+  }
+  .app-card-status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  .status-live { color: #4ADE80; }
+  .status-live::before { content: ''; width: 6px; height: 6px; background: #4ADE80; border-radius: 50%; display: inline-block; }
+  .status-dev { color: var(--amber); }
+  .status-dev::before { content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; display: inline-block; }
+  .app-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .app-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+  .app-card-links {
+    display: flex; gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+  }
+  .app-card-links a {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--amber);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .app-card-links a:hover { color: var(--amber-hover); text-decoration: underline; }
+
+  /* ========== PROCESS ========== */
+  .process-section { background: var(--bg-white); }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 56px;
+    position: relative;
+  }
+  .process-step {
+    padding: 40px 32px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .process-step:last-child { border-right: none; }
+  .step-number {
+    font-family: var(--font-display);
+    font-size: 64px;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+  }
+  .process-step:hover .step-number { color: var(--amber); }
+  .process-step h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .process-step p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  /* ========== CTA ========== */
+  .cta-section {
+    background: var(--bg-white);
+    text-align: center;
+    padding: 140px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section .section-title { margin: 0 auto 16px; max-width: 700px; }
+  .cta-section .section-sub { margin: 0 auto 48px; text-align: center; }
+  .cta-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 64px 48px 40px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .footer-brand .nav-logo { font-size: 24px; color: var(--charcoal); }
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    max-width: 280px;
+    line-height: 1.6;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--amber); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .footer-bottom a {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-bottom a:hover { color: var(--text-secondary); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .process-step { border-bottom: 1px solid var(--border); }
+    .process-step:nth-child(2) { border-right: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { 
+      display: none; 
+      position: absolute; top: 72px; left: 0; right: 0;
+      background: var(--bg-white);
+      flex-direction: column;
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+    }
+    .nav-links.active { display: flex; }
+    .nav-toggle { display: block; }
+    section { padding: 80px 24px; }
+    .hero-content { padding: 120px 24px 60px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .process-step { border-right: none; }
+    .cta-section { padding: 100px 24px; }
+    footer { padding: 48px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav>
+  <a href="#" class="nav-logo">OnSite<span>TECH</span></a>
+  <div class="nav-links" id="navLinks">
+    <a href="#apps">Our Apps</a>
+    <a href="#services">Services</a>
+    <a href="#process">How It Works</a>
+    <a href="#" class="nav-client">Client Area</a>
+    <a href="https://www.onsiteclub.ca" class="nav-back">← OnSite Club</a>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-label">Construction Software Development</p>
+    <h1 class="hero-title">Your App Idea.<br>We Build It.</h1>
+    <p class="hero-sub">We're a tech company born on the jobsite. We design and develop custom apps, dashboards, and digital tools for construction — from napkin sketch to app store.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">I Have an Idea →</a>
+      <a href="#apps" class="btn-outline">See Our Apps</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OUR APPS (FIRST SECTION) ========== -->
+<section class="apps" id="apps">
+  <div class="container">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Built, Shipped, Running.</h2>
+    <p class="section-sub">Real products used by real workers on real jobsites across Canada.</p>
+    <div class="apps-grid">
+      <div class="app-card">
+        <img src="https://www.onsiteclub.ca/_next/image?url=%2Fimages%2Ftool-calculator-woman.png&w=800&q=80" alt="OnSite Calculator" class="app-card-img">
+        <div class="app-card-body">
+          <span class="app-card-status status-live">Live</span>
+          <h3>OnSite Calculator</h3>
+          <p>Voice-activated inch calculator for framers and carpenters. Add, split, and convert measurements without removing your gloves.</p>
+          <div class="app-card-links">
+            <a href="#">App Store →</a>
+            <a href="#">Google Play →</a>
+          </div>
+        </div>
+      </div>
+      <div class="app-card">
+        <img src="https://www.onsiteclub.ca/_next/image?url=%2Fimages%2Ftimekeeper-men.png&w=800&q=80" alt="OnSite Timekeeper" class="app-card-img">
+        <div class="app-card-body">
+          <span class="app-card-status status-live">Live</span>
+          <h3>OnSite Timekeeper</h3>
+          <p>GPS-based time tracking with geofence auto clock-in/out. Generates digital timecards and invoices automatically.</p>
+          <div class="app-card-links">
+            <a href="#">App Store →</a>
+            <a href="#">Google Play →</a>
+          </div>
+        </div>
+      </div>
+      <div class="app-card">
+        <img src="https://www.onsiteclub.ca/_next/image?url=%2Fimages%2Ftool-checklist.png&w=800&q=80" alt="OnSite Checklist" class="app-card-img">
+        <div class="app-card-body">
+          <span class="app-card-status status-live">Live</span>
+          <h3>OnSite Checklist</h3>
+          <p>Job checklists with AI-powered step and material suggestions. Phase-based tracking for residential builds.</p>
+          <div class="app-card-links">
+            <a href="#">Web App →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Two Ways We Can Help.</h2>
+    <p class="section-sub">Whether you have an idea that needs building or need ready-made tools for your crew.</p>
+    <div class="services-grid">
+      <div class="service-block">
+        <span class="tag">Custom Development</span>
+        <h3>Build Your App With Us</h3>
+        <p>You have the idea. We turn it into a real product. Mobile apps, web dashboards, workflow automations — from first draft to published app.</p>
+        <ul class="service-features">
+          <li><span class="check">✓</span> Native iOS & Android development</li>
+          <li><span class="check">✓</span> Web apps & admin dashboards</li>
+          <li><span class="check">✓</span> API integrations (Stripe, QuickBooks, Canada Post)</li>
+          <li><span class="check">✓</span> GPS, geofencing & offline-first architecture</li>
+          <li><span class="check">✓</span> App Store & Play Store deployment</li>
+        </ul>
+      </div>
+      <div class="service-block">
+        <span class="tag">Ready-Made Solutions</span>
+        <h3>Our SaaS for Construction</h3>
+        <p>Tools we've already built, tested on real jobsites, and ready for your team. Manage time, track tasks, run calculations — all built for the field.</p>
+        <ul class="service-features">
+          <li><span class="check">✓</span> Time tracking with GPS & geofencing</li>
+          <li><span class="check">✓</span> Voice-activated construction calculator</li>
+          <li><span class="check">✓</span> AI-powered job checklists</li>
+          <li><span class="check">✓</span> Invoice generation & digital timecards</li>
+          <li><span class="check">✓</span> Construction management dashboards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESS ========== -->
+<section id="process" class="process-section">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Straight Talk. Real Results.</h2>
+    <p class="section-sub">No jargon, no endless meetings. A simple process designed for people who build things for a living.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h3>Tell Us Your Idea</h3>
+        <p>Casual conversation, zero commitment. We sign an NDA before you share any details. Your idea is safe.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h3>We Design It Together</h3>
+        <p>Visual prototype so you can see it before we write a single line of code. Your feedback shapes everything.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h3>We Build It — You Watch</h3>
+        <p>Weekly progress updates. You see what's happening, give feedback, and stay in control the entire time.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <h3>Launch + Support</h3>
+        <p>App published, team trained, ongoing support. We don't disappear after launch — we're with you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <p class="section-label">Ready?</p>
+    <h2 class="section-title">Napkin Sketch or Half-Built Project.<br>We'll Take It From Here.</h2>
+    <p class="section-sub">It doesn't matter where your idea is. What matters is that it gets built right. Talk to us — confidentially.</p>
+    <a href="mailto:tech@onsiteclub.ca" class="btn-primary">Start a Conversation →</a>
+    <p class="cta-note">We respond within 24 hours. Confidentiality guaranteed.</p>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">OnSite<span>TECH</span></a>
+      <p>A division of OnSite Club. Building the tools that build better.</p>
+    </div>
+    <div class="footer-col">
+      <h4>OnSite Ecosystem</h4>
+      <a href="https://www.onsiteclub.ca">OnSite Club</a>
+      <a href="https://shop.onsiteclub.ca">OnSite Shop</a>
+      <a href="https://learn.onsiteclub.ca">OnSite Learn</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">NDA Template</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:tech@onsiteclub.ca">tech@onsiteclub.ca</a>
+      <a href="#">Client Dashboard</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 OnSite Tech — A division of OnSite Club. Ottawa, Ontario, Canada.</p>
+    <a href="https://www.onsiteclub.ca">← Back to OnSite Club</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('navToggle').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('active');
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('navLinks').classList.remove('active');
+      }
+    });
+  });
+
+  // Nav background on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(245,245,243,0.98)';
+    } else {
+      nav.style.background = 'rgba(245,245,243,0.92)';
+    }
+  });
+
+  // Intersection Observer for fade-in animations
+  const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.service-block, .app-card, .process-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, box-shadow 0.35s';
+    observer.observe(el);
+  });
+</script>
