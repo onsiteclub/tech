@@ -6,8 +6,12 @@ export default function Home() {
       <nav className="nav">
         <div className="container">
           <a href="/" className="nav-brand">
-            <span className="nav-brand-dot" />
-            OnSite <span>Tech</span>
+            <img
+              src="/images/logo-onsite-club.png"
+              alt="OnSite Club"
+              className="nav-logo"
+            />
+            <span className="nav-brand-label">Tech</span>
           </a>
           <div className="nav-links">
             <a href="#services">Services</a>
@@ -25,24 +29,48 @@ export default function Home() {
 
       {/* HERO */}
       <section className="hero">
+        <div className="hero-bg" aria-hidden="true" />
+        <div className="hero-overlay" aria-hidden="true" />
+        <div className="hero-glow" aria-hidden="true" />
         <div className="container">
-          <div className="hero-kicker">Construction Software</div>
-          <h1 className="hero-title">
-            We Build the Tools<br />
-            That Build <span>Better.</span>
-          </h1>
-          <p className="hero-desc">
-            Custom mobile apps, dashboards, and digital workflows for construction
-            companies. From jobsite to back office — software that actually works on
-            the ground.
-          </p>
-          <div className="hero-actions">
-            <a href="#contact" className="btn-dark">
-              Start a Project
-            </a>
-            <a href="#portfolio" className="btn-ghost">
-              See Our Work
-            </a>
+          <div className="hero-grid">
+            {/* Left — Text */}
+            <div className="hero-text">
+              <div className="hero-kicker">OnSite Tech</div>
+              <h1 className="hero-title">
+                We Build the Tools<br />
+                That Build <span>Better.</span>
+              </h1>
+              <p className="hero-desc">
+                Custom mobile apps, dashboards, and digital workflows for
+                construction companies. From jobsite to back office — software
+                that actually works on the ground.
+              </p>
+              <div className="hero-actions">
+                <a href="#contact" className="hero-cta">
+                  Start a Project
+                </a>
+                <a href="#portfolio" className="hero-cta-ghost">
+                  See Our Work
+                </a>
+              </div>
+            </div>
+
+            {/* Right — Staggered images */}
+            <div className="hero-images">
+              <div className="hero-card hero-card--offset-down">
+                <img
+                  src="https://www.onsiteclub.ca/_next/image?url=%2Fimages%2Ftool-calculator-woman.png&w=800&q=80"
+                  alt="OnSite Calculator — voice-powered construction calculator"
+                />
+              </div>
+              <div className="hero-card hero-card--offset-up">
+                <img
+                  src="https://www.onsiteclub.ca/_next/image?url=%2Fimages%2Ftimekeeper-men.png&w=800&q=80"
+                  alt="OnSite Timekeeper — GPS time tracking for crews"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
