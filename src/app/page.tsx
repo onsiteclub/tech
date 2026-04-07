@@ -69,9 +69,9 @@ export default function Home() {
       <section className="apps" id="apps">
         <div className="container">
           <p className="section-label">Portfolio</p>
-          <h2 className="section-title">Built, Shipped, Running.</h2>
+          <h2 className="section-title">Tools We&apos;ve Built.</h2>
           <p className="section-sub">
-            Real products used by real workers on real jobsites across Canada.
+            Apps we designed, built, and use ourselves.
           </p>
           <div className="apps-grid">
             <div className="app-card">
@@ -89,7 +89,7 @@ export default function Home() {
                   gloves.
                 </p>
                 <div className="app-card-links">
-                  <a href="#" className="store-badge">
+                  <a href="https://apps.apple.com/us/app/onsite-calculator/id6758554794" target="_blank" rel="noopener noreferrer" className="store-badge">
                     <svg className="store-badge-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                       <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                     </svg>
@@ -98,7 +98,7 @@ export default function Home() {
                       <strong>App Store</strong>
                     </span>
                   </a>
-                  <a href="#" className="store-badge">
+                  <a href="https://play.google.com/store/apps/details?id=ca.onsiteclub.calculator" target="_blank" rel="noopener noreferrer" className="store-badge">
                     <svg className="store-badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 2L12 12L4 12Z" fill="#4285F4"/>
                       <path d="M4 2L20 12L12 12Z" fill="#EA4335"/>
@@ -127,16 +127,7 @@ export default function Home() {
                   Generates digital timecards and invoices automatically.
                 </p>
                 <div className="app-card-links">
-                  <a href="#" className="store-badge">
-                    <svg className="store-badge-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                    </svg>
-                    <span className="store-badge-text">
-                      <small>Download on the</small>
-                      <strong>App Store</strong>
-                    </span>
-                  </a>
-                  <a href="#" className="store-badge">
+                  <a href="https://play.google.com/store/apps/details?id=com.onsiteclub.timekeeper" target="_blank" rel="noopener noreferrer" className="store-badge">
                     <svg className="store-badge-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 2L12 12L4 12Z" fill="#4285F4"/>
                       <path d="M4 2L20 12L12 12Z" fill="#EA4335"/>
@@ -179,6 +170,52 @@ export default function Home() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="reviews-section">
+        <div className="container">
+          <p className="section-label">Reviews</p>
+          <h2 className="section-title">What Users Are Saying.</h2>
+          <div className="reviews-grid">
+            <div className="review-card">
+              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p className="review-text">
+                &ldquo;Finally a calculator that speaks construction. I use it every
+                day on the job. Voice input saves me so much time.&rdquo;
+              </p>
+              <div className="review-author">
+                <strong>Mike R.</strong>
+                <span>Framer &middot; Ottawa, ON</span>
+              </div>
+              <span className="review-source">OnSite Calculator</span>
+            </div>
+            <div className="review-card">
+              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p className="review-text">
+                &ldquo;Timekeeper paid for itself in the first week. No more
+                chasing guys for their hours. The geofence does it all.&rdquo;
+              </p>
+              <div className="review-author">
+                <strong>Carlos D.</strong>
+                <span>GC &middot; Toronto, ON</span>
+              </div>
+              <span className="review-source">OnSite Timekeeper</span>
+            </div>
+            <div className="review-card">
+              <div className="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+              <p className="review-text">
+                &ldquo;The checklist AI suggested steps I would have forgotten.
+                Great for new guys on the crew who need guidance.&rdquo;
+              </p>
+              <div className="review-author">
+                <strong>James T.</strong>
+                <span>Site Super &middot; Vancouver, BC</span>
+              </div>
+              <span className="review-source">OnSite Checklist</span>
             </div>
           </div>
         </div>
@@ -285,7 +322,7 @@ export default function Home() {
             It doesn&apos;t matter where your idea is. What matters is that it
             gets built right. Talk to us — confidentially.
           </p>
-          <a href="mailto:tech@onsiteclub.ca" className="btn-primary">
+          <a href="mailto:dev@onsiteclub.ca" className="btn-primary">
             Start a Conversation &rarr;
           </a>
           <p className="cta-note">
@@ -338,7 +375,7 @@ export default function Home() {
           </div>
           <div className="footer-col">
             <h4>Contact</h4>
-            <a href="mailto:tech@onsiteclub.ca">tech@onsiteclub.ca</a>
+            <a href="mailto:dev@onsiteclub.ca">dev@onsiteclub.ca</a>
             <a href="#">Client Dashboard</a>
           </div>
         </div>
